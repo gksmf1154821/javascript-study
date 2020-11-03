@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closuer</title>
+</head>
+<body>
+
+
+    <script>
+        function scope(){
+            var a =1;
+            console.log(a);
+        }
+        //scope(); // Javascript 에서는 함수기준으로 Scope가 생성된다.
+        // ES6에서는 조금다르다.
+
+
+        var d  = 'x'; // global scope
+
+        function outer(){
+            var a = 1; 
+            var b = 'B';
+            function inner(){
+                var a =2;
+                //console.log(b); //먼저 inner 함수내에 범위에서 b를 찾는다. outer범위안에서 생성된 function이니 그다음으로 찾는다.
+                console.log(b); // 
+            }
+            //inner();
+            return inner // 함수 자체를 리턴한다.
+            //return inner();  << 함수 결가값을 리턴한다. 결과값을 리턴하게되면 someFun 값에는 함수가아닌 값이들어가 someFun(); 함수실행시 에러가 발생한다.
+        }
+        
+        var someFun = outer();
+        someFun(); //Closuer는 외부함수 변수에 접근할수있는것. 
+        
+
+
+    </script>
+</body>
+</html>
